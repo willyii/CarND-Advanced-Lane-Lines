@@ -4,6 +4,9 @@ from perspective import unwarp
 from color_grad import color_grad
 import numpy as np
 import os
+from line_finding import fit_polynomial 
+import matplotlib.pyplot as plt
+
 
 def image_pipeline(image):
 
@@ -26,4 +29,4 @@ def image_pipeline(image):
 
     binary = color_grad(warped)
     
-    return binary
+    return fit_polynomial(binary)

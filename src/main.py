@@ -5,6 +5,8 @@ if __name__ == '__main__':
     test_img = plt.imread("../test_images/test3.jpg")
 
     ans = image_pipeline(test_img)
+    plt.imshow(ans)
+    plt.show()
     plt.imsave("ans.jpg", ans, cmap ='gray')
 
     

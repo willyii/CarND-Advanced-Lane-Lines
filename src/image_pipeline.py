@@ -3,11 +3,17 @@ from undistort import undistort
 from perspective import unwarp 
 from color_grad import color_grad
 import numpy as np
+import os
 
 def image_pipeline(image):
 
-    # Camera calibration
-    mxt, dist = calibrate_camera("../camera_cal/calibration*.jpg") 
+    if(os.path.exists("./param/calibration_param.npz")):
+        data = np.load("./param/calibration_param.npz")
+        mxt = data["mxt"]
+        dist = data["dist"]
+    else:
+        # Camera calibration
+        mxt, dist = calibrate_camera("../camera_cal/calibration*.jpg") 
 
     # undistortion
     undist = undistort(image, mxt, dist)
